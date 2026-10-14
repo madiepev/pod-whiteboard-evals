@@ -1,0 +1,33 @@
+name: Test dataset feedback
+description: Suggest adding, removing, or changing a test prompt.
+title: "[Dataset feedback]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reviewing the proposed test dataset.
+
+        Reference images show what the source currently uses. They do not mean every prompt should produce a whiteboard.
+
+  - type: dropdown
+    id: change
+    attributes:
+      label: What should we do?
+      options:
+        - Add a prompt to the test dataset
+        - Remove a prompt from the test dataset
+        - Change an existing prompt
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Tell us more
+      description: Include the prompt number for an existing case. For a new case, provide the proposed prompt or source content.
+      placeholder: |
+        Prompt number, if applicable:
+        Why should it be added, removed, or changed?
+        Proposed prompt or change:
+    validations:
+      required: true

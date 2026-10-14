@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suggested whiteboard evaluation prompts</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #172b4d;
+      background: #f5f7fa;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: min(1100px, calc(100% - 32px)); margin: 32px auto 64px; }
+    .intro, .case {
+      background: #fff;
+      border: 1px solid #dfe1e6;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgb(9 30 66 / 12%);
+    }
+    .intro { padding: 24px; margin-bottom: 24px; }
+    h1 { margin: 0 0 12px; font-size: 2rem; }
+    .intro p { max-width: 78ch; line-height: 1.55; }
+    .summary { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; }
+    .summary li, .badge {
+      border-radius: 999px;
+      background: #deebff;
+      color: #0747a6;
+      font-weight: 600;
+      padding: 4px 10px;
+    }
+    .case { margin-top: 16px; overflow: hidden; }
+    .case header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
+      border-bottom: 1px solid #dfe1e6;
+    }
+    .number { font-weight: 700; margin-right: 8px; }
+    .badge { display: inline-block; font-size: .8rem; margin: 2px; }
+    .badge.secondary { background: #eae6ff; color: #403294; }
+    button {
+      border: 0;
+      border-radius: 4px;
+      padding: 8px 12px;
+      color: #fff;
+      background: #0052cc;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button:hover { background: #0747a6; }
+    button:focus-visible, summary:focus-visible { outline: 3px solid #ffab00; outline-offset: 2px; }
+    .prompt {
+      margin: 0;
+      padding: 20px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font: 1rem/1.55 "Segoe UI", Arial, sans-serif;
+      background: #fff;
+    }
+    details { border-top: 1px solid #dfe1e6; }
+    summary { cursor: pointer; padding: 14px 20px; font-weight: 600; background: #fafbfc; }
+    .evaluator { padding: 20px; background: #fafbfc; }
+    dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; }
+    dt { font-weight: 700; }
+    dd { margin: 0; overflow-wrap: anywhere; }
+    img { display: block; max-width: 100%; max-height: 720px; margin: 20px auto 0; border: 1px solid #dfe1e6; }
+    .notice { color: #5e6c84; }
+    @media (max-width: 640px) {
+      .case header { align-items: flex-start; flex-direction: column; }
+      dl { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="intro">
+      <h1>Suggested whiteboard evaluation prompts</h1>
+      <p>These prompts use only a source section heading and its adjacent paragraphs. Reference images and metadata are evaluator-only and are collapsed by default. A reference shows what the source currently uses; it does not mean the agent should reproduce that format or always create a whiteboard.</p>
+      <ul class="summary">
+        <li>16 representative cases</li>
+        <li>3 challenge cases</li>
+        <li>1 routing or non-diagram case</li>
+      </ul>
+      <p class="notice">The local reference previews appear after the <code>images/</code> folder is restored. Prompt text and evaluator guidance work without it.</p>
+    </section>
+    
+        <article class="case" id="case-1">
+          <header>
+            <div>
+              <span class="number">Prompt 1</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-1">Copy prompt</button>
+          </header>
+          <pre id="prompt-1" class="prompt">Section: Explore the model catalog
+
+&gt; [!Tip] &gt; Hugging Face is an open-source community making models available to the public. You can find all models in their [catalog](https://huggingface.co/models?azure-portal=true). Additionally, you can explore the documentation to learn more about how individual models work, like [BERT](https://huggingface.co/docs/transformers/main/model_doc/bert?azure-portal=true).
+
+The Azure Machine Learning model catalog integrates with models from Hugging Face and other sources. The Azure Machine Learning model catalog makes it easier to explore, test, fine-tune, and deploy models.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>explore-foundation-models-in-model-catalog</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot of the model catalog in the Azure Machine Learning studio.</dd>
+                <dt>Source file</dt><dd><code>explore-foundation-models-in-model-catalog/includes/5-explore-foundation-models.md</code></dd>
+              </dl>
+              <img src="images/explore-foundation-models-in-model-catalog/media/model-catalog.png" alt="Screenshot of the model catalog in the Azure Machine Learning studio." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-2">
+          <header>
+            <div>
+              <span class="number">Prompt 2</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-2">Copy prompt</button>
+          </header>
+          <pre id="prompt-2" class="prompt">Section: Add a second dimension
+
+1. In the **PivotTable** Fields pane, select **Day**. Excel automatically adds **Day** to the **Rows** area of the PivotTable and displays the total number (sum) of lemonade sales for each weekday within each month, like this:
+
+Now you can see monthly sales aggregated by weekday. For example, 57 of the sales in January were made on a Saturday. You can also expand/collapse months to *drill-up*/*drill-down* the levels of the hierarchy.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>get-started-data-analytics</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot of a Pivot Table showing sales grouped by month and day.</dd>
+                <dt>Source file</dt><dd><code>get-started-data-analytics/includes/5-exercise-analyze-data.md</code></dd>
+              </dl>
+              <img src="images/get-started-data-analytics/media/pivot-month-day.png" alt="Screenshot of a Pivot Table showing sales grouped by month and day." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-3">
+          <header>
+            <div>
+              <span class="number">Prompt 3</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-3">Copy prompt</button>
+          </header>
+          <pre id="prompt-3" class="prompt">Section: Azure Speech - Voice Live
+
+You can also enable **Voice mode** for a Microsoft Foundry agent in the playground, which integrates Azure Speech Voice Live into the agent definition. This approach means that speech configuration is encapsulated in the agent itself, reducing the client code required to use it.
+
+To develop a custom app that uses the agent, we need to write some code. To create an application in Python, you need the `azure-ai-voicelive` package.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>get-started-speech-azure</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot of a voice-enabled agent.</dd>
+                <dt>Source file</dt><dd><code>get-started-speech-azure/includes/4-voice-live.md</code></dd>
+              </dl>
+              <img src="images/get-started-speech-azure/media/speech-session.png" alt="Screenshot of a voice-enabled agent." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-4">
+          <header>
+            <div>
+              <span class="number">Prompt 4</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-4">Copy prompt</button>
+          </header>
+          <pre id="prompt-4" class="prompt">Section: Connect to a Git Repository
+
+2. **Connect a Fabric workspace to a Git repository:** Next, within the workspace that you want to connect to your repository, establish a connection to the repository from the **Git integration** option in workspace settings.
+
+When you connect a workspace to Git, you **create or select an existing a Git repository branch** to sync with. Fabric syncs the content between the workspace and Git so they have the same content.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>implement-cicd-in-fabric</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot of workspace to Git provider connection interface.</dd>
+                <dt>Source file</dt><dd><code>implement-cicd-in-fabric/includes/3-implement-version-control-and-git-integration.md</code></dd>
+              </dl>
+              <img src="images/implement-cicd-in-fabric/media/connect-git.png" alt="Screenshot of workspace to Git provider connection interface." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-5">
+          <header>
+            <div>
+              <span class="number">Prompt 5</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-5">Copy prompt</button>
+          </header>
+          <pre id="prompt-5" class="prompt">Section: Run queries against the database
+
+1. Replace the SQL statement with the following statement to retrieve the inventory items in order of the quantity in stock:
+
+1. Replace the SQL statement with the statement shown below. This statement is a query that uses the  **JOIN** operator to combine data from the *CustomerOrder* table and the *Inventory* table. It lists the details of orders placed by customers together with the inventory information for each item ordered:</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>query-relational-data</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot showing how to run an ORDER query in SQL Database Query Editor.</dd>
+                <dt>Source file</dt><dd><code>query-relational-data/includes/6-exercise-perform-query.md</code></dd>
+              </dl>
+              <img src="images/query-relational-data/media/6-select-order-sql-databases.png" alt="Screenshot showing how to run an ORDER query in SQL Database Query Editor." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-6">
+          <header>
+            <div>
+              <span class="number">Prompt 6</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-6">Copy prompt</button>
+          </header>
+          <pre id="prompt-6" class="prompt">Section: Configure the entity type key
+
+Keys can only use string or integer properties—other data types don&#x27;t work as identifiers. Keys are required before you can bind the entity type to data sources. Without a key, the system can&#x27;t create instances from your source data.
+
+You repeat this pattern for each business concept in your domain—Department, Room, Patient. Each entity type gets business-friendly properties, a property type, and a key that uniquely identifies each instance.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>create-ontology-with-fabric-iq</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot of Hospital entity type configuration showing properties list and HospitalId configured as the key.</dd>
+                <dt>Source file</dt><dd><code>create-ontology-with-fabric-iq/includes/3-build-ontology-components-manually.md</code></dd>
+              </dl>
+              <img src="images/create-ontology-with-fabric-iq/media/configured-properties.png" alt="Screenshot of Hospital entity type configuration showing properties list and HospitalId configured as the key." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-7">
+          <header>
+            <div>
+              <span class="number">Prompt 7</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-7">Copy prompt</button>
+          </header>
+          <pre id="prompt-7" class="prompt">Section: Query a SQL Database
+
+You can query a SQL database in Fabric using similar tools available for Azure SQL Database, with the added convenience of a web-based editor in the Fabric portal. This provides an end-to-end, integrated product that simplifies analytics and fosters collaboration.
+
+The **Open in** option allows you to launch Visual Studio Code and SQL Server Management Studio (SSMS) with the connection properties prefilled, making it easier to connect and start working immediately.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>get-started-sql-database-microsoft-fabric</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot showing how to query a SQL database in Microsoft Fabric.</dd>
+                <dt>Source file</dt><dd><code>get-started-sql-database-microsoft-fabric/includes/2-work-with-sql-database.md</code></dd>
+              </dl>
+              <img src="images/get-started-sql-database-microsoft-fabric/media/2-query.png" alt="Screenshot showing how to query a SQL database in Microsoft Fabric." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-8">
+          <header>
+            <div>
+              <span class="number">Prompt 8</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-8">Copy prompt</button>
+          </header>
+          <pre id="prompt-8" class="prompt">Section: GitHub and GitHub Copilot
+
+GitHub is the world&#x27;s most popular platform for source control and DevOps management, and can be a critical element of any team development effort. Visual Studio and VS Code both provide native integration with GitHub, and access to GitHub Copilot; an AI assistant that can significantly improve developer productivity and effectiveness.
+
+&gt; [!TIP] &gt; For more information about using GitHub Copilot in Visual Studio Code, see **[GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/overview?azure-portal=true)**.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>prepare-azure-ai-development</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot of GitHub Copilot in Visual Studio Code.</dd>
+                <dt>Source file</dt><dd><code>prepare-azure-ai-development/includes/5-tools-and-sdks.md</code></dd>
+              </dl>
+              <img src="images/prepare-azure-ai-development/media/github-copilot.png" alt="Screenshot of GitHub Copilot in Visual Studio Code." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-9">
+          <header>
+            <div>
+              <span class="number">Prompt 9</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Screenshot</span>
+            </div>
+            <button type="button" data-copy="prompt-9">Copy prompt</button>
+          </header>
+          <pre id="prompt-9" class="prompt">Section: Create a notebook
+
+The screenshot below walks you through the main notebook components in Fabric.
+
+1. The menu bar in a Microsoft Fabric notebook offers various features. It allows you to save and export your notebook, manage cells, terminate the session, schedule the execution of your notebook, launch [Data Wrangler](/fabric/data-science/data-wrangler/?azure-portal=true), adjust the layout, among others. To access all these features, simply switch between the **Home**, **Edit**, **Run**, **Data**, and **View** tabs.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> Exact UI should not be invented. Retaining or recapturing a screenshot may be better when controls are instructional.</p>
+              <dl>
+                <dt>Module</dt><dd>explore-data-for-data-science-microsoft-fabric</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot of the options available in a Microsoft Fabric notebook.</dd>
+                <dt>Source file</dt><dd><code>explore-data-for-data-science-microsoft-fabric/includes/2-explore-notebooks.md</code></dd>
+              </dl>
+              <img src="images/explore-data-for-data-science-microsoft-fabric/media/2-notebook-options.png" alt="Screenshot of the options available in a Microsoft Fabric notebook." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-10">
+          <header>
+            <div>
+              <span class="number">Prompt 10</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Diagram</span>
+            </div>
+            <button type="button" data-copy="prompt-10">Copy prompt</button>
+          </header>
+          <pre id="prompt-10" class="prompt">Section: Components of an AI agent
+
+Users interact with an agent s through *prompts* - natural language questions or statements that the agent uses its large language model to interpret and reason over. The agent can then use its instructions and skills to determine the right actions to take, and leverage tools to take them.
+
+For example, a computing history agent could provide a chat interface into which users can enter questions about vintage computers and related topics.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> A whiteboard is suitable only if it preserves the relationships and improves instructional clarity.</p>
+              <dl>
+                <dt>Module</dt><dd>develop-first-agent</dd>
+                <dt>Source category</dt><dd>Diagram</dd>
+                <dt>Alt text</dt><dd>Diagram of a user interacting with an agent.</dd>
+                <dt>Source file</dt><dd><code>develop-first-agent/includes/2-generative-ai-agents.md</code></dd>
+              </dl>
+              <img src="images/develop-first-agent/media/generative-ai.png" alt="Diagram of a user interacting with an agent." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-11">
+          <header>
+            <div>
+              <span class="number">Prompt 11</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Diagram</span>
+            </div>
+            <button type="button" data-copy="prompt-11">Copy prompt</button>
+          </header>
+          <pre id="prompt-11" class="prompt">Section: Organizing data with the medallion architecture
+
+- **Bronze**: raw data ingested as-is from source systems, with no transformations applied, preserving the original records for reprocessing. - **Silver**: cleansed and conformed data, with duplicates removed and data types standardized. - **Gold**: aggregated, business-ready data modeled for specific reporting and analytics use cases.
+
+Teams use this pattern because it creates clear quality boundaries at each layer, and you can always reprocess data from the original Bronze records if requirements change.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> A whiteboard is suitable only if it preserves the relationships and improves instructional clarity.</p>
+              <dl>
+                <dt>Module</dt><dd>explore-core-data-concepts</dd>
+                <dt>Source category</dt><dd>Diagram</dd>
+                <dt>Alt text</dt><dd>Diagram showing a medallion architecture.</dd>
+                <dt>Source file</dt><dd><code>explore-core-data-concepts/includes/6-analytical-processing.md</code></dd>
+              </dl>
+              <img src="images/explore-core-data-concepts/media/medallion-architecture.png" alt="Diagram showing a medallion architecture." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-12">
+          <header>
+            <div>
+              <span class="number">Prompt 12</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Diagram</span>
+            </div>
+            <button type="button" data-copy="prompt-12">Copy prompt</button>
+          </header>
+          <pre id="prompt-12" class="prompt">Section: Understand stream processing
+
+For example, a better approach to our hypothetical car counting problem might be to apply a **streaming** approach, by counting the cars in real-time as they pass:
+
+In this approach, you don&#x27;t need to wait until all of the cars have parked to start processing them, and you can aggregate the data over time intervals; for example, by counting the number of cars that pass each minute.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> A whiteboard is suitable only if it preserves the relationships and improves instructional clarity.</p>
+              <dl>
+                <dt>Module</dt><dd>explore-fundamentals-stream-processing</dd>
+                <dt>Source category</dt><dd>Diagram</dd>
+                <dt>Alt text</dt><dd>Diagram of cars being counted as they pass.</dd>
+                <dt>Source file</dt><dd><code>explore-fundamentals-stream-processing/includes/2-batch-stream.md</code></dd>
+              </dl>
+              <img src="images/explore-fundamentals-stream-processing/media/stream-processing.png" alt="Diagram of cars being counted as they pass." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-13">
+          <header>
+            <div>
+              <span class="number">Prompt 13</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Diagram</span>
+            </div>
+            <button type="button" data-copy="prompt-13">Copy prompt</button>
+          </header>
+          <pre id="prompt-13" class="prompt">Section: How does generative AI work?
+
+The ability to generate content is based on a *language model*, which has been trained with huge volumes of data - often documents from the Internet or other public sources of information.
+
+Users interact with generative AI language models through *prompts* - natural language statements or questions. The language model in a generative AI solution uses the prompt to initiate the generation of a meaningful response.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> A whiteboard is suitable only if it preserves the relationships and improves instructional clarity.</p>
+              <dl>
+                <dt>Module</dt><dd>get-started-ai-fundamentals</dd>
+                <dt>Source category</dt><dd>Diagram</dd>
+                <dt>Alt text</dt><dd>Diagram of a generative AI application in which a user chats with a language model.</dd>
+                <dt>Source file</dt><dd><code>get-started-ai-fundamentals/includes/2-generative-ai.md</code></dd>
+              </dl>
+              <img src="images/get-started-ai-fundamentals/media/generative-ai.png" alt="Diagram of a generative AI application in which a user chats with a language model." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-14">
+          <header>
+            <div>
+              <span class="number">Prompt 14</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Diagram</span>
+            </div>
+            <button type="button" data-copy="prompt-14">Copy prompt</button>
+          </header>
+          <pre id="prompt-14" class="prompt">Section: How RAG works
+
+RAG is a pattern that retrieves relevant information from a data source and includes it in the prompt before the model generates a response. The process follows three steps:
+
+1. **Retrieve**: Search a data source for information that is relevant to the user&#x27;s question. 1. **Augment**: Add the retrieved information to the prompt as context. 1. **Generate**: Send the augmented prompt to the language model to generate a grounded response.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> A whiteboard is suitable only if it preserves the relationships and improves instructional clarity.</p>
+              <dl>
+                <dt>Module</dt><dd>optimize-generative-ai-model-performance</dd>
+                <dt>Source category</dt><dd>Diagram</dd>
+                <dt>Alt text</dt><dd>Diagram showing the three-step RAG pattern: retrieve grounding data, augment the prompt with that data, and generate a grounded response.</dd>
+                <dt>Source file</dt><dd><code>optimize-generative-ai-model-performance/includes/3-retrieval-augmented-generation.md</code></dd>
+              </dl>
+              <img src="images/optimize-generative-ai-model-performance/media/rag-pattern.png" alt="Diagram showing the three-step RAG pattern: retrieve grounding data, augment the prompt with that data, and generate a grounded response." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-15">
+          <header>
+            <div>
+              <span class="number">Prompt 15</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Chart</span>
+            </div>
+            <button type="button" data-copy="prompt-15">Copy prompt</button>
+          </header>
+          <pre id="prompt-15" class="prompt">Section: Show the plot area
+
+The chart produced by the code would look similar to the following image:
+
+You can use the Matplotlib library to create many kinds of chart; or if preferred, you can use other libraries such as **Seaborn** to create highly customized charts.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> The response should retain a chart when the quantitative relationship is the learning objective.</p>
+              <dl>
+                <dt>Module</dt><dd>use-apache-spark-azure-databricks</dd>
+                <dt>Source category</dt><dd>Chart / graph</dd>
+                <dt>Alt text</dt><dd>A bar chart showing product counts by category.</dd>
+                <dt>Source file</dt><dd><code>use-apache-spark-azure-databricks/includes/06-visualize-data.md</code></dd>
+              </dl>
+              <img src="images/use-apache-spark-azure-databricks/media/chart.png" alt="A bar chart showing product counts by category." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-16">
+          <header>
+            <div>
+              <span class="number">Prompt 16</span>
+              <span class="badge">Representative</span>
+              <span class="badge secondary">Code/output</span>
+            </div>
+            <button type="button" data-copy="prompt-16">Copy prompt</button>
+          </header>
+          <pre id="prompt-16" class="prompt">Section: Work with data in notebooks
+
+Drag and drop allows you to easily import data from the Lakehouse explorer. It supports various file types like text files, tables, images, etc. You can drop the data into an existing or new cell, and the notebook generates a code snippet to preview the data.
+
+Also, you can easily insert images into a markdown cell by dragging and dropping them from your browser or local computer.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> The response should preserve code or output when converting it to a whiteboard would reduce precision.</p>
+              <dl>
+                <dt>Module</dt><dd>explore-data-for-data-science-microsoft-fabric</dd>
+                <dt>Source category</dt><dd>Code / output</dd>
+                <dt>Alt text</dt><dd>Example of the drag-and-drop feature generating the necessary code to read a file.</dd>
+                <dt>Source file</dt><dd><code>explore-data-for-data-science-microsoft-fabric/includes/2-explore-notebooks.md</code></dd>
+              </dl>
+              <img src="images/explore-data-for-data-science-microsoft-fabric/media/2-code-snippet.gif" alt="Example of the drag-and-drop feature generating the necessary code to read a file." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-17">
+          <header>
+            <div>
+              <span class="number">Prompt 17</span>
+              <span class="badge">Challenge</span>
+              <span class="badge secondary">Sparse context</span>
+            </div>
+            <button type="button" data-copy="prompt-17">Copy prompt</button>
+          </header>
+          <pre id="prompt-17" class="prompt">Section: Model customer entities
+
+The following diagram shows what our customer entity looks like.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> The agent should request more context or explicitly limit its proposal instead of inventing details.</p>
+              <dl>
+                <dt>Module</dt><dd>implement-non-relational-data-model</dd>
+                <dt>Source category</dt><dd>Diagram</dd>
+                <dt>Alt text</dt><dd>Diagram that shows a modeled customer document.</dd>
+                <dt>Source file</dt><dd><code>implement-non-relational-data-model/includes/3-identify-access-patterns-for-your-app.md</code></dd>
+              </dl>
+              <img src="images/implement-non-relational-data-model/media/3-modeled-customer-document.png" alt="Diagram that shows a modeled customer document." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-18">
+          <header>
+            <div>
+              <span class="number">Prompt 18</span>
+              <span class="badge">Challenge</span>
+              <span class="badge secondary">Long context</span>
+            </div>
+            <button type="button" data-copy="prompt-18">Copy prompt</button>
+          </header>
+          <pre id="prompt-18" class="prompt">Section: How does a neural network learn?
+
+The weights in a neural network are central to how it calculates predicted values for labels. During the training process, the model *learns* the weights that will result in the most accurate predictions. Let&#x27;s explore the training process in a little more detail to understand how this learning takes place.
+
+1. The training and validation datasets are defined, and the training features are fed into the input layer. 1. The neurons in each layer of the network apply their weights (which are initially assigned randomly) and feed the data through the network. 1. The output layer produces a vector containing the calculated values for ***&amp;#375;***. For example, an output for a penguin class prediction might be ***[0.3. 0.1. 0.6]***. 1. A *loss function* is used to compare the predicted ***&amp;#375;*** values to the known ***y*** values and aggregate the difference (which is known as the *loss*). For example, if the known class for the case that returned the output in the previous step is *Chinstrap*, then the ***y*** value should be ***[0.0, 0.0, 1.0]***. The absolute difference between this and the ***&amp;#375;*** vector is ***[0.3, 0.1, 0.4]***. In reality, the loss function calculates the aggregate variance for multiple cases and summarizes it as a single *loss* value. 1. Since the entire network is essentially one large nested function, an optimization function can use differential calculus to evaluate the influence of each weight in the network on the loss, and determine how they could be adjusted (up or down) to reduce the amount of overall loss. The specific optimization technique can vary, but usually involves a *gradient descent* approach in which each weight is increased or decreased to minimize the loss. 1. The changes to the weights are *backpropagated* to the layers in the network, replacing the previously used values. 1. The process is repeated over multiple iterations (known as *epochs*) until the loss is minimized and the model predicts acceptably accurately.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> The agent should identify the important learning relationships and simplify without dropping the training sequence.</p>
+              <dl>
+                <dt>Module</dt><dd>fundamentals-machine-learning</dd>
+                <dt>Source category</dt><dd>Diagram</dd>
+                <dt>Alt text</dt><dd>Diagram of a neural network being trained, evaluated, and optimized.</dd>
+                <dt>Source file</dt><dd><code>fundamentals-machine-learning/includes/8-deep-learning.md</code></dd>
+              </dl>
+              <img src="images/fundamentals-machine-learning/media/neural-network-training.png" alt="Diagram of a neural network being trained, evaluated, and optimized." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-19">
+          <header>
+            <div>
+              <span class="number">Prompt 19</span>
+              <span class="badge">Challenge</span>
+              <span class="badge secondary">Precision architecture</span>
+            </div>
+            <button type="button" data-copy="prompt-19">Copy prompt</button>
+          </header>
+          <pre id="prompt-19" class="prompt">Section: Identify the architecture components
+
+| Component | Role | |---|---| | **Source Oracle database** | The Oracle schema to convert. The tool reads schema metadata from the Oracle data dictionary, never row-level application data. | | **VS Code PostgreSQL extension** | The primary interface. Manages connections, runs the Migration Wizard, hosts the Schema Review pane, and produces all conversion artifacts. | | **Azure Database for PostgreSQL flexible server** | Hosts the scratch schemas used for validation. The converted DDL runs against this server before the tool generates final output. | | **Microsoft Foundry** | Hosts the language models that power AI-driven schema translation. Your organization creates a model deployment and the tool calls it during conversion. | | **Schema conversion agents** | AI agents that orchestrate the conversion process, passing schema context to the language model and processing the results. |
+
+The conversion runs through six sequential stages. Understanding each stage helps you interpret the conversion report and focus your effort after the run completes.</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> The agent should preserve technical boundaries and dependencies or recommend a formal architecture diagram.</p>
+              <dl>
+                <dt>Module</dt><dd>convert-oracle-schema-azure-database-postgresql-ai</dd>
+                <dt>Source category</dt><dd>Diagram</dd>
+                <dt>Alt text</dt><dd>Diagram of the five-component Oracle to Azure Database for PostgreSQL schema conversion architecture and its data flow.</dd>
+                <dt>Source file</dt><dd><code>convert-oracle-schema-azure-database-postgresql-ai/includes/2-understand-ai-powered-schema-conversion.md</code></dd>
+              </dl>
+              <img src="images/convert-oracle-schema-azure-database-postgresql-ai/media/schema-conversion-architecture.png" alt="Diagram of the five-component Oracle to Azure Database for PostgreSQL schema conversion architecture and its data flow." loading="lazy">
+            </div>
+          </details>
+        </article>
+        <article class="case" id="case-20">
+          <header>
+            <div>
+              <span class="number">Prompt 20</span>
+              <span class="badge">Routing</span>
+              <span class="badge secondary">Non-diagram</span>
+            </div>
+            <button type="button" data-copy="prompt-20">Copy prompt</button>
+          </header>
+          <pre id="prompt-20" class="prompt">You can access the Studio at [documentintelligence.ai.azure.com](https://documentintelligence.ai.azure.com).
+
+The Document Intelligence Studio supports the following project types:</pre>
+          <details>
+            <summary>Evaluator-only reference and guidance</summary>
+            <div class="evaluator">
+              <p><strong>Evaluation focus:</strong> The expected behavior is to recommend a screenshot or procedural capture, not to recreate exact UI as a whiteboard.</p>
+              <dl>
+                <dt>Module</dt><dd>extract-data-with-document-intelligence</dd>
+                <dt>Source category</dt><dd>Screenshot</dd>
+                <dt>Alt text</dt><dd>Screenshot showing the Document Intelligence Studio home page.</dd>
+                <dt>Source file</dt><dd><code>extract-data-with-document-intelligence/includes/3-use-document-intelligence-studio.md</code></dd>
+              </dl>
+              <img src="images/extract-data-with-document-intelligence/media/document-intelligence-homepage.png" alt="Screenshot showing the Document Intelligence Studio home page." loading="lazy">
+            </div>
+          </details>
+        </article>
+  </main>
+  <script>
+    document.addEventListener("click", async (event) => {
+      const button = event.target.closest("[data-copy]");
+      if (!button) return;
+      const prompt = document.getElementById(button.dataset.copy).textContent;
+      await navigator.clipboard.writeText(prompt);
+      const original = button.textContent;
+      button.textContent = "Copied";
+      setTimeout(() => { button.textContent = original; }, 1500);
+    });
+  </script>
+</body>
+</html>
