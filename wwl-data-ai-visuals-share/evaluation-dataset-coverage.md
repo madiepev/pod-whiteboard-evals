@@ -16,23 +16,23 @@ Screenshots and diagrams account for 90.6% of the inventory.
 
 ## Supporting-context coverage
 
-Each expected prompt uses the section heading and the paragraphs immediately before and after the source image. Image metadata, the reference image, alt text, filename, category, and evaluator guidance are excluded from the agent input.
+Prompts start from the inventory's section heading and adjacent paragraphs. All 20 were reviewed against their live Microsoft Learn units on 2026-10-15. Eleven cases now include additional source-grounded summaries of relevant definitions, steps, or relationships; nine retain their original excerpts. Prompt 16 replaces its incomplete adjacent fragments with a self-contained summary of the resource hierarchy. The review page records a live source link and preparation note for every case. These notes, image metadata, the reference image, alt text, filename, category, and evaluator guidance are excluded from the copied agent input.
 
-The combined adjacent context ranges from 5 to 341 words. Its distribution across the 1,476 inventory items translates to a 20-item evaluation set as follows:
+The combined adjacent context in the inventory ranges from 5 to 341 words. The table compares that baseline with the actual prompt lengths after context expansion. Counts use whitespace-delimited words in the copied supporting text, excluding the section heading:
 
-| Combined context length | Inventory items | Inventory share | Expected in 20 items | Target occurrences |
+| Combined context length | Inventory items | Inventory share | Expected in 20 items | Actual occurrences |
 |---|---:|---:|---:|---:|
 | 5–24 words | 76 | 5.1% | 1.0 | 0 |
-| 25–49 words | 323 | 21.9% | 4.4 | 5 |
-| 50–74 words | 448 | 30.4% | 6.1 | 6 |
-| 75–99 words | 317 | 21.5% | 4.3 | 5 |
-| 100–149 words | 216 | 14.6% | 2.9 | 3 |
-| 150–341 words | 96 | 6.5% | 1.3 | 1 |
+| 25–49 words | 323 | 21.9% | 4.4 | 1 |
+| 50–74 words | 448 | 30.4% | 6.1 | 2 |
+| 75–99 words | 317 | 21.5% | 4.3 | 4 |
+| 100–149 words | 216 | 14.6% | 2.9 | 8 |
+| 150–341 words | 96 | 6.5% | 1.3 | 5 |
 | **Total** | **1,476** | **100.0%** | **20.0** | **20** |
 
-The expected values are the inventory percentages multiplied by 20. Target occurrences use whole numbers and are balanced to keep the evaluation set at exactly 20 items. The final selection shifts one case from the shortest range to the 75–99-word range so that the complete numbered process for Prompt 12 is included.
+The expected values are the inventory percentages multiplied by 20, not quotas. The expanded dataset intentionally contains more context than the adjacent-paragraph baseline where isolated excerpts omitted essential information. Prompt lengths now range from 44 to 321 words. The inventory files remain unchanged.
 
-The proposed cases include typical mid-length context plus deliberate sparse- and long-context challenges. A sparse prompt tests whether the agent requests clarification instead of inventing details. A long prompt tests whether it can identify and simplify the important relationships.
+The proposed cases include typical mid-length context plus deliberate sparse- and long-context challenges. Prompt 18 retains its limited benchmark context to test whether the agent requests clarification instead of inventing details. Prompt 17 retains its long neural-network explanation to test whether the agent can identify and simplify the important relationships. Prompt 19 adds concrete API configuration and permission details while retaining its technical-precision challenge role.
 
 ## Product and content-level coverage
 
@@ -93,6 +93,6 @@ The same 20 items should satisfy each of the following coverage views. The count
 |---|---|
 | Case role | 16 representative cases, 3 challenge cases, and 1 negative or routing case |
 | Reference visual | 15 diagrams, 4 screenshots, and 1 chart (Other) |
-| Supporting-context length | 5 with 25–49 words, 6 with 50–74, 5 with 75–99, 3 with 100–149, and 1 with 150–341 |
+| Supporting-context length | 1 with 25–49 words, 2 with 50–74, 4 with 75–99, 8 with 100–149, and 5 with 150–341 |
 | Product or workload | 5 Microsoft Fabric, 5 Microsoft Foundry and machine learning, 4 cross-product data and AI fundamentals, 3 database and SQL, and 1 each for Excel, GitHub and Visual Studio Code, and Azure Databricks |
 | Content purpose | 8 introducing or explaining a concept, 10 implementing or using something, and 2 designing or modeling something |

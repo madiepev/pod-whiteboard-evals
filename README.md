@@ -46,7 +46,7 @@ Each inventory record can contain:
 - `preceding_paragraph`: text introducing the visual;
 - `following_paragraph`: text continuing or explaining it.
 
-The preceding and following paragraphs form the **supporting context**. Their combined word count is used for context-length analysis. Test prompts normally use the heading and adjacent paragraphs; long-context cases can use a full subsection, while sparse cases intentionally retain limited information.
+The preceding and following paragraphs form the **supporting context**. Their combined word count is used for inventory context-length analysis. Test prompts start with these excerpts and can add summaries from the live Microsoft Learn unit when definitions, steps, or relationships are missing. The prompt review page records live source links and preparation notes separately from copied input. Prompt word counts describe the prepared text, not just the inventory excerpts; sparse challenge cases intentionally retain limited information.
 
 The reference image, alt text, filename, category, and evaluator annotations are not included in the agent input.
 
